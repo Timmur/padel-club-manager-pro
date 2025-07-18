@@ -1,4 +1,4 @@
-import { type DailyStats } from 'wasp/entities';
+import { type DailyStats, type User } from 'wasp/entities';
 // TODO: Importación comentada temporalmente hasta configurar Stripe correctamente
 // import { type DailyStatsJob } from 'wasp/server/jobs';
 import Stripe from 'stripe';
@@ -7,7 +7,6 @@ import { listOrders } from '@lemonsqueezy/lemonsqueezy.js';
 import { getDailyPageViews, getSources } from './providers/plausibleAnalyticsUtils';
 // import { getDailyPageViews, getSources } from './providers/googleAnalyticsUtils';
 import { paymentProcessor } from '../payment/paymentProcessor';
-import { type DailyStats, type User } from 'wasp/entities';
 // import { HttpError } from 'wasp/server';
 // import { createTask, type CreateStripePaymentIntent } from 'wasp/server/operations';
 // import { getDailyStats, getWeeklyStats } from 'wasp/server/operations';
