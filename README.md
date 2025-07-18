@@ -71,8 +71,8 @@ PadelClub Manager es una plataforma SaaS B2B diseñada específicamente para adm
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/Timmur/padelclub-manager.git
-cd padelclub-manager
+git clone https://github.com/Timmur/padel-club-manager-pro.git
+cd padel-club-manager-pro
 
 # 2. Navegar al directorio de la aplicación
 cd app
@@ -141,7 +141,7 @@ npm run dev
 ## 📁 Estructura del Proyecto
 
 ```
-PCM/
+padel-club-manager-pro/
 ├── app/                                      # Aplicación principal Wasp
 │   ├── main.wasp                            # Configuración principal
 │   ├── src/                                 # Código fuente
@@ -158,13 +158,13 @@ PCM/
 ├── PRP - Product Requirements Proposal.md   # Propuesta inicial
 ├── TODO.md                                  # Lista de tareas y seguimiento
 ├── CLAUDE.md                                # Documentación de desarrollo
-├── INITIAL.md                               # Configuración inicial
+├── SETUP.md                                 # Configuración inicial
 └── Imagenes/                                # Mockups y referencias visuales
 ```
 
 ## 🔗 Enlaces y Recursos
 
-- **Repositorio**: https://github.com/Timmur/padelclub-manager
+- **Repositorio**: https://github.com/Timmur/padel-club-manager-pro
 - **Documentación técnica**: Ver archivos PRD y PRP
 - **Open SaaS**: https://opensaas.sh
 - **Wasp Framework**: https://wasp.sh
@@ -175,7 +175,7 @@ PCM/
 - **[PRP - Product Requirements Proposal](./PRP%20-%20Product%20Requirements%20Proposal.md)**: Propuesta inicial y modelo de negocio
 - **[TODO.md](./TODO.md)**: Lista de tareas y seguimiento del proyecto
 - **[CLAUDE.md](./CLAUDE.md)**: Documentación de desarrollo con IA
-- **[INITIAL.md](./INITIAL.md)**: Configuración inicial del proyecto
+- **[SETUP.md](./SETUP.md)**: Configuración inicial del proyecto
 
 ## 🤝 Contribuciones
 

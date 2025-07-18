@@ -69,7 +69,7 @@ wsl bash -c 'cd /mnt/c/Users/timur/Documents/Proyectos/PCM/app && /home/timur/.l
 ### Estructura de Archivos
 
 ```
-PCM/
+padel-club-manager-pro/
 ├── app/                          # 🎯 Aplicación principal
 │   ├── main.wasp                # Configuración de Wasp
 │   ├── src/
@@ -117,6 +117,7 @@ PCM/
 - [x] **Aplicación ejecutándose en localhost:3000**
 - [x] **Sistema de autenticación activo**
 - [x] **Personalización básica (títulos, meta tags)**
+- [x] **Repositorio GitHub creado**
 
 ### 🔄 En Progreso
 
@@ -138,27 +139,34 @@ PCM/
 ### Desarrollo
 
 ```bash
+# Clonar el repositorio
+git clone https://github.com/Timmur/padel-club-manager-pro.git
+cd padel-club-manager-pro
+
+# Navegar al directorio de la aplicación
+cd app
+
 # Iniciar todo el stack
-npm run start
+wasp start
 
 # Solo base de datos
-npm run db:start
+wasp db start
 
 # Solo migraciones
-npm run db:migrate
+wasp db migrate-dev
 
 # Abrir Prisma Studio
-wsl bash -c '/home/timur/.local/bin/wasp db studio'
+wasp db studio
 ```
 
 ### Debugging
 
 ```bash
 # Ver logs de la aplicación
-wsl bash -c '/home/timur/.local/bin/wasp start --verbose'
+wasp start --verbose
 
 # Resetear base de datos
-wsl bash -c '/home/timur/.local/bin/wasp db reset'
+wasp db reset
 
 # Verificar estado de containers
 docker ps
