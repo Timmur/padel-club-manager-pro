@@ -128,6 +128,14 @@ page EmailVerificationPage {
 }
 //#endregion
 
+//#region Dashboard
+route DashboardRoute { path: "/dashboard", to: DashboardPage }
+page DashboardPage {
+  authRequired: true,
+  component: import DashboardPage from "@src/dashboard/DashboardPage"
+}
+//#endregion
+
 //#region User
 route AccountRoute { path: "/account", to: AccountPage }
 page AccountPage {
@@ -243,17 +251,18 @@ query getDailyStats {
   entities: [User, DailyStats]
 }
 
-job dailyStatsJob {
-  executor: PgBoss,
-  perform: {
-    fn: import { calculateDailyStats } from "@src/analytics/stats"
-  },
-  schedule: {
-    cron: "0 * * * *" // every hour. useful in production
-    // cron: "* * * * *" // every minute. useful for debugging
-  },
-  entities: [User, DailyStats, Logs, PageViewSource]
-}
+// TODO: Comentado temporalmente hasta configurar Stripe correctamente
+// job dailyStatsJob {
+//   executor: PgBoss,
+//   perform: {
+//     fn: import { calculateDailyStats } from "@src/analytics/stats"
+//   },
+//   schedule: {
+//     cron: "0 * * * *" // every hour. useful in production
+//     // cron: "* * * * *" // every minute. useful for debugging
+//   },
+//   entities: [User, DailyStats, Logs, PageViewSource]
+// }
 //#endregion
 
 //#region Admin Dashboard

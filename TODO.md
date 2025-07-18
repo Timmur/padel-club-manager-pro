@@ -20,20 +20,22 @@
 
 ### FASE 1: Personalización de la Base Open SaaS (Semana 1-2)
 
-- [ ] **[2025-07-18]** Inicializar proyecto con Open SaaS (Wasp)
+- [x] **[2025-07-18]** Inicializar proyecto con Open SaaS (Wasp) - **COMPLETADO**
   - No repetir: autenticación, pagos, base de datos, estructura, Docker, testing, CI/CD, multi-tenant, Stripe, LemonSqueezy, NextAuth, etc. (ya incluidos)
   - Personalizar branding, nombre, metadatos y estructura de carpetas según pádel
   - Documentar arquitectura y puntos de extensión para desarrolladores y agentes AI
   - Archivos: main.wasp, README, docs/
+  - **✅ COMPLETADO**: Proyecto inicializado con template OpenSaaS, personalizado con branding de pádel, documentación de arquitectura creada
 
 
-[ ] **[2025-01-22]** Personalizar layout principal del dashboard (UI/UX pádel) - **Dificultad: MEDIO**
+- [x] **[2025-07-18]** Personalizar layout principal del dashboard (UI/UX pádel) - **EN PROGRESO**
   - Sidebar y navegación inspirada en Playtomic, pero usando componentes y hooks de Open SaaS
   - Header con usuario, notificaciones y branding del club
   - Routing y estructura de secciones usando el sistema de rutas de Wasp
   - Archivos: components/layout/, app/dashboard/layout.tsx
   - Tiempo estimado: 6-8 horas
   - Dependencias: Base Open SaaS personalizada
+  - **✅ COMPLETADO**: Layout dashboard creado con sidebar responsivo, header, navegación y componentes de estadísticas
 
 ### FASE 2: Módulo Métricas (Semana 3)
 

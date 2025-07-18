@@ -1,16 +1,40 @@
 import { type DailyStats } from 'wasp/entities';
-import { type DailyStatsJob } from 'wasp/server/jobs';
+// TODO: Importación comentada temporalmente hasta configurar Stripe correctamente
+// import { type DailyStatsJob } from 'wasp/server/jobs';
 import Stripe from 'stripe';
 import { stripe } from '../payment/stripe/stripeClient';
 import { listOrders } from '@lemonsqueezy/lemonsqueezy.js';
 import { getDailyPageViews, getSources } from './providers/plausibleAnalyticsUtils';
 // import { getDailyPageViews, getSources } from './providers/googleAnalyticsUtils';
 import { paymentProcessor } from '../payment/paymentProcessor';
-import { SubscriptionStatus } from '../payment/plans';
+import { type DailyStats, type User } from 'wasp/entities';
+// import { HttpError } from 'wasp/server';
+// import { createTask, type CreateStripePaymentIntent } from 'wasp/server/operations';
+// import { getDailyStats, getWeeklyStats } from 'wasp/server/operations';
+// import { stripe } from '../payment/stripe';
+// import { TotalPaidUsers } from '../payment/plans';
+// import { fetchStripeCustomers } from '../payment/stripe';
+// import { DailyStatsJob } from 'wasp/server/jobs';
+// import { calculateDailyStats } from 'wasp/server/operations';
+// import { SubscriptionStatus } from '../payment/plans';
+// import { HttpError } from 'wasp/server';
+// import { createTask, type CreateStripePaymentIntent } from 'wasp/server/operations';
+// import { getDailyStats, getWeeklyStats } from 'wasp/server/operations';
+// import { stripe } from '../payment/stripe';
+// import { TotalPaidUsers } from '../payment/plans';
+// import { fetchStripeCustomers } from '../payment/stripe';
+// import { DailyStatsJob } from 'wasp/server/jobs';
+// import { calculateDailyStats } from 'wasp/server/operations';
+// import { SubscriptionStatus } from '../payment/plans';
 
 export type DailyStatsProps = { dailyStats?: DailyStats; weeklyStats?: DailyStats[]; isLoading?: boolean };
 
-export const calculateDailyStats: DailyStatsJob<never, void> = async (_args, context) => {
+export const calculateDailyStats = async (_args: any, context: any) => {
+  // TODO: Función comentada temporalmente hasta configurar Stripe correctamente
+  console.log('calculateDailyStats job temporalmente deshabilitado');
+  return;
+  
+  /* CÓDIGO ORIGINAL COMENTADO:
   const nowUTC = new Date(Date.now());
   nowUTC.setUTCHours(0, 0, 0, 0);
 
@@ -31,7 +55,7 @@ export const calculateDailyStats: DailyStatsJob<never, void> = async (_args, con
     // we don't want to count those users as current paying users
     const paidUserCount = await context.entities.User.count({
       where: {
-        subscriptionStatus: SubscriptionStatus.Active,
+        // subscriptionStatus: SubscriptionStatus.Active,
       },
     });
 
@@ -197,4 +221,6 @@ async function fetchTotalLemonSqueezyRevenue() {
     console.error('Error fetching Lemon Squeezy revenue:', error);
     throw error;
   }
+}
+  */ // FIN DEL CÓDIGO ORIGINAL COMENTADO
 }
