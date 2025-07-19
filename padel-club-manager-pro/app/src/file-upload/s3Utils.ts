@@ -1,17 +1,17 @@
 import * as path from 'path';
 import { randomUUID } from 'crypto';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+// import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 // import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 // import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
 import { MAX_FILE_SIZE_BYTES } from './validation';
 
-const s3Client = new S3Client({
-  region: process.env.AWS_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_S3_IAM_ACCESS_KEY!,
-    secretAccessKey: process.env.AWS_S3_IAM_SECRET_KEY!,
-  },
-});
+// const s3Client = new S3Client({
+//   region: process.env.AWS_S3_REGION,
+//   credentials: {
+//     accessKeyId: process.env.AWS_S3_IAM_ACCESS_KEY!,
+//     secretAccessKey: process.env.AWS_S3_IAM_SECRET_KEY!,
+//   },
+// });
 
 type S3Upload = {
   fileType: string;

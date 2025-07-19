@@ -28,7 +28,12 @@
       "Bash(claude mcp add-json playwright '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"@executeautomation/playwright-mcp-server\"\"]}')",
       "Bash(claude mcp add-json exa '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"exa-mcp-server\"\"], \"\"env\"\": {\"\"EXA_API_KEY\"\": \"\"98d47e57-dae0-4ef4-a656-699a4e66cf9d\"\"}}')",
       "Bash(claude mcp add-json sequential-thinking '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"@modelcontextprotocol/server-sequential-thinking\"\"]}')",
-      "Bash(claude mcp:*)"
+      "Bash(claude mcp:*)",
+      "Bash(npx playwright:*)",
+      "Bash(node:*)",
+      "Bash(wget:*)",
+      "Bash(pkill:*)",
+      "Bash(killall:*)"
     ],
     "deny": []
   }
