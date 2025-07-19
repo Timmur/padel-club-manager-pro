@@ -22,7 +22,7 @@
 
 #### 1.1 Modelos de Base de Datos
 
-- [ ] **[PRÓXIMA]** Crear modelo Club - **Dificultad: FÁCIL**
+- [x] **[2025-07-18]** Crear modelo Club - **Dificultad: FÁCIL** ✅ COMPLETADO
   - Descripción: Modelo principal para clubs multi-tenant
   - Campos: name, address, phone, email, settings, timezone, slug
   - Relación 1:N con User (administradores del club)
@@ -30,7 +30,7 @@
   - Tiempo estimado: 2-3 horas
   - Dependencias: Base OpenSaaS configurada
 
-- [ ] **[SIGUIENTE]** Crear modelo Court (Pista) - **Dificultad: FÁCIL**
+- [x] **[2025-07-18]** Crear modelo Court (Pista) - **Dificultad: FÁCIL** ✅ COMPLETADO
   - Descripción: Modelo para pistas de pádel
   - Campos: name, type (indoor/outdoor), status (active/maintenance), pricePerHour
   - Relación N:1 con Club
@@ -39,7 +39,7 @@
   - Tiempo estimado: 2-3 horas
   - Dependencias: Modelo Club creado
 
-- [ ] **[DESPUÉS]** Crear modelo Booking (Reserva) - **Dificultad: MEDIO**
+- [x] **[2025-07-18]** Crear modelo Booking (Reserva) - **Dificultad: MEDIO** ✅ COMPLETADO
   - Descripción: Modelo central de reservas de pistas
   - Campos: date, startTime, endTime, status, totalPrice, customerName, customerPhone
   - Relaciones: Club, Court, User (quien hizo la reserva)
@@ -50,7 +50,7 @@
 
 #### 1.2 Operaciones Básicas (CRUD)
 
-- [ ] **[DESPUÉS]** Crear operaciones CRUD para Club - **Dificultad: FÁCIL**
+- [x] **[2025-07-18]** Crear operaciones CRUD para Club - **Dificultad: FÁCIL** ✅ COMPLETADO
   - Descripción: Operaciones básicas de gestión de clubs
   - Funciones: createClub, getClub, updateClub
   - Validaciones con Zod para datos del club
@@ -59,7 +59,7 @@
   - Tiempo estimado: 2-3 horas
   - Dependencias: Modelo Club en BD
 
-- [ ] **[DESPUÉS]** Crear operaciones CRUD para Court - **Dificultad: FÁCIL**
+- [x] **[2025-07-18]** Crear operaciones CRUD para Court - **Dificultad: FÁCIL** ✅ COMPLETADO
   - Descripción: Gestión completa de pistas
   - Funciones: createCourt, getCourts, updateCourt, deleteCourt
   - Filtros por club (multi-tenant)
@@ -73,7 +73,7 @@
 
 #### 2.1 Lista de Pistas
 
-- [ ] **[DESPUÉS]** Crear página de gestión de pistas - **Dificultad: FÁCIL**
+- [x] **[2025-07-18]** Crear página de gestión de pistas - **Dificultad: FÁCIL** ✅ COMPLETADO
   - Descripción: Interfaz principal para ver y gestionar pistas
   - Componentes: Tabla responsiva con lista de pistas del club
   - Funcionalidades: Botones crear/editar/eliminar, estados visuales

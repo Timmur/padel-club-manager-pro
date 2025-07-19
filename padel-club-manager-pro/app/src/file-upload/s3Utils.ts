@@ -1,8 +1,8 @@
 import * as path from 'path';
 import { randomUUID } from 'crypto';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
+// import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+// import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
 import { MAX_FILE_SIZE_BYTES } from './validation';
 
 const s3Client = new S3Client({
@@ -22,25 +22,31 @@ type S3Upload = {
 export const getUploadFileSignedURLFromS3 = async ({ fileName, fileType, userId }: S3Upload) => {
   const key = getS3Key(fileName, userId);
 
-  const { url: s3UploadUrl, fields: s3UploadFields } = await createPresignedPost(s3Client, {
-    Bucket: process.env.AWS_S3_FILES_BUCKET!,
-    Key: key,
-    Conditions: [['content-length-range', 0, MAX_FILE_SIZE_BYTES]],
-    Fields: {
-      'Content-Type': fileType,
-    },
-    Expires: 3600,
-  });
+  // Temporarily disabled due to missing AWS SDK dependencies
+  throw new Error('S3 upload functionality temporarily disabled');
+  
+  // const { url: s3UploadUrl, fields: s3UploadFields } = await createPresignedPost(s3Client, {
+  //   Bucket: process.env.AWS_S3_FILES_BUCKET!,
+  //   Key: key,
+  //   Conditions: [['content-length-range', 0, MAX_FILE_SIZE_BYTES]],
+  //   Fields: {
+  //     'Content-Type': fileType,
+  //   },
+  //   Expires: 3600,
+  // });
 
-  return { s3UploadUrl, key, s3UploadFields };
+  // return { s3UploadUrl, key, s3UploadFields };
 };
 
 export const getDownloadFileSignedURLFromS3 = async ({ key }: { key: string }) => {
-  const command = new GetObjectCommand({
-    Bucket: process.env.AWS_S3_FILES_BUCKET,
-    Key: key,
-  });
-  return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+  // Temporarily disabled due to missing AWS SDK dependencies
+  throw new Error('S3 download functionality temporarily disabled');
+  
+  // const command = new GetObjectCommand({
+  //   Bucket: process.env.AWS_S3_FILES_BUCKET,
+  //   Key: key,
+  // });
+  // return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
 };
 
 function getS3Key(fileName: string, userId: string) {

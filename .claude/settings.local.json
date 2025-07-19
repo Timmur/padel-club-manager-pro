@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(wsl bash -c:*)",
+      "Bash(/home/timur/.local/bin/wasp db start:*)",
+      "Bash(/home/timur/.local/bin/wasp start:*)",
+      "Bash(curl:*)",
+      "Bash(ss:*)",
+      "Bash(/home/timur/.local/bin/wasp:*)",
+      "Bash(lsof:*)",
+      "Bash(source ~/.bashrc)",
+      "Bash(ccundo config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(chmod:*)",
+      "Bash(~/auto-checkpoint.sh)",
+      "Bash(crontab:*)",
+      "Bash(systemctl status:*)",
+      "Bash(service cron:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(timeout:*)",
+      "Bash(claude mcp)",
+      "Bash(claude mcp add-json memory '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"@modelcontextprotocol/server-memory\"\"], \"\"env\"\": {\"\"MEMORY_FILE_PATH\"\": \"\"memory.json\"\"}}')",
+      "Bash(claude mcp add-json playwright '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"@executeautomation/playwright-mcp-server\"\"]}')",
+      "Bash(claude mcp add-json exa '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"exa-mcp-server\"\"], \"\"env\"\": {\"\"EXA_API_KEY\"\": \"\"98d47e57-dae0-4ef4-a656-699a4e66cf9d\"\"}}')",
+      "Bash(claude mcp add-json sequential-thinking '{\"\"command\"\": \"\"npx\"\", \"\"args\"\": [\"\"-y\"\", \"\"@modelcontextprotocol/server-sequential-thinking\"\"]}')",
+      "Bash(claude mcp:*)"
+    ],
+    "deny": []
+  }
+}

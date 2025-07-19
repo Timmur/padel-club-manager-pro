@@ -22,10 +22,15 @@ model User {
   datePaid                  DateTime?
   credits                   Int             @default(3)
 
+  // Padel Club relationships
+  clubId                    String?         // Club that this user manages/belongs to
+  club                      Club?           @relation(fields: [clubId], references: [id])
+
   gptResponses              GptResponse[]
   contactFormMessages       ContactFormMessage[]
   tasks                     Task[]
   files                     File[]
+  bookingsCreated           Booking[]       // Bookings created by this user
 }
 
 model GptResponse {
@@ -109,4 +114,120 @@ model ContactFormMessage {
   content                   String
   isRead                    Boolean         @default(false)
   repliedAt                 DateTime?
+}
+
+// Padel Club Management Models
+
+model Club {
+  id                        String          @id @default(uuid())
+  createdAt                 DateTime        @default(now())
+  updatedAt                 DateTime        @updatedAt
+
+  // Basic club information
+  name                      String
+  slug                      String          @unique  // For public URLs like /club/club-padel-barcelona
+  
+  // Contact information
+  address                   String?
+  city                      String?
+  country                   String?         @default("Spain")
+  phone                     String?
+  email                     String?
+  website                   String?
+  
+  // Operational settings
+  timezone                  String          @default("Europe/Madrid")
+  currency                  String          @default("EUR")
+  
+  // Club configuration (stored as JSON)
+  settings                  Json?           // Opening hours, policies, etc.
+  
+  // Club status
+  isActive                  Boolean         @default(true)
+  
+  // Relations
+  users                     User[]          // Club administrators and staff
+  courts                    Court[]         // Padel courts belonging to this club
+  bookings                  Booking[]       // All bookings for this club
+  
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Court {
+  id                        String          @id @default(uuid())
+  createdAt                 DateTime        @default(now())
+  updatedAt                 DateTime        @updatedAt
+
+  // Basic court information
+  name                      String          // e.g., "Pista 1", "Cancha Central"
+  description               String?         // Optional description
+  
+  // Court type and specifications
+  type                      String          @default("outdoor") // "indoor", "outdoor", "covered"
+  surface                   String          @default("artificial_grass") // "artificial_grass", "concrete", "ceramic"
+  
+  // Court status and availability
+  status                    String          @default("active") // "active", "maintenance", "inactive"
+  isAvailable               Boolean         @default(true)
+  
+  // Pricing
+  pricePerHour              Float           @default(25.0) // Price in club's currency
+  
+  // Operating hours (stored as JSON for flexibility)
+  operatingHours            Json?           // e.g., {"monday": {"open": "09:00", "close": "22:00"}, ...}
+  
+  // Club relationship (multi-tenant)
+  clubId                    String
+  club                      Club            @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  
+  // Relations
+  bookings                  Booking[]       // Bookings for this court
+  
+  @@index([clubId])
+  @@index([clubId, status])
+  @@index([clubId, isAvailable])
+}
+
+model Booking {
+  id                        String          @id @default(uuid())
+  createdAt                 DateTime        @default(now())
+  updatedAt                 DateTime        @updatedAt
+
+  // Booking time information
+  date                      DateTime        // Date of the booking (YYYY-MM-DD)
+  startTime                 String          // Start time in HH:MM format (e.g., "10:00")
+  endTime                   String          // End time in HH:MM format (e.g., "11:30")
+  duration                  Int             @default(90) // Duration in minutes
+  
+  // Booking status
+  status                    String          @default("pending") // "pending", "confirmed", "cancelled", "completed", "no_show"
+  
+  // Customer information
+  customerName              String
+  customerPhone             String?
+  customerEmail             String?
+  notes                     String?         // Additional notes about the booking
+  
+  // Pricing information
+  totalPrice                Float           // Total price for the booking
+  isPaid                    Boolean         @default(false)
+  paymentMethod             String?         // "cash", "card", "online", "transfer"
+  
+  // Relations (multi-tenant via court/club)
+  courtId                   String
+  court                     Court           @relation(fields: [courtId], references: [id], onDelete: Cascade)
+  
+  clubId                    String          // Denormalized for easier queries
+  club                      Club            @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  
+  // User who created the booking (staff member or customer)
+  createdById               String?
+  createdBy                 User?           @relation(fields: [createdById], references: [id])
+  
+  @@index([clubId])
+  @@index([clubId, date])
+  @@index([clubId, courtId, date])
+  @@index([clubId, status])
+  @@index([date, startTime])
 }

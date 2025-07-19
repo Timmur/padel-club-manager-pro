@@ -134,6 +134,12 @@ page DashboardPage {
   authRequired: true,
   component: import DashboardPage from "@src/dashboard/DashboardPage"
 }
+
+route CourtsRoute { path: "/dashboard/courts", to: CourtsPage }
+page CourtsPage {
+  authRequired: true,
+  component: import CourtsPage from "@src/courts/CourtsPage"
+}
 //#endregion
 
 //#region User
@@ -335,4 +341,91 @@ page AdminMessagesPage {
   authRequired: true,
   component: import AdminMessages from "@src/messages/MessagesPage"
 }
+//#endregion
+
+//#region Padel Club Management
+
+// Club operations
+query getClub {
+  fn: import { getClub } from "@src/club/operations",
+  entities: [Club, User]
+}
+
+query getUserClub {
+  fn: import { getUserClub } from "@src/club/operations", 
+  entities: [Club, User, Court]
+}
+
+query getClubBySlug {
+  fn: import { getClubBySlug } from "@src/club/operations",
+  entities: [Club, Court]
+}
+
+action createClub {
+  fn: import { createClub } from "@src/club/operations",
+  entities: [Club, User]
+}
+
+action updateClub {
+  fn: import { updateClub } from "@src/club/operations",
+  entities: [Club, User]
+}
+
+// Court operations
+query getCourts {
+  fn: import { getCourts } from "@src/courts/operations",
+  entities: [Court, Club, Booking]
+}
+
+query getCourt {
+  fn: import { getCourt } from "@src/courts/operations",
+  entities: [Court, Club, Booking, User]
+}
+
+action createCourt {
+  fn: import { createCourt } from "@src/courts/operations",
+  entities: [Court, Club]
+}
+
+action updateCourt {
+  fn: import { updateCourt } from "@src/courts/operations",
+  entities: [Court, Club, Booking]
+}
+
+action deleteCourt {
+  fn: import { deleteCourt } from "@src/courts/operations",
+  entities: [Court, Club, Booking]
+}
+
+// Booking operations
+query getBookings {
+  fn: import { getBookings } from "@src/bookings/operations",
+  entities: [Booking, Court, Club, User]
+}
+
+query getBooking {
+  fn: import { getBooking } from "@src/bookings/operations",
+  entities: [Booking, Court, Club, User]
+}
+
+query getCourtAvailability {
+  fn: import { getCourtAvailability } from "@src/bookings/operations",
+  entities: [Court, Club, Booking, User]
+}
+
+action createBooking {
+  fn: import { createBooking } from "@src/bookings/operations",
+  entities: [Booking, Court, Club, User]
+}
+
+action updateBooking {
+  fn: import { updateBooking } from "@src/bookings/operations",
+  entities: [Booking, Court, Club, User]
+}
+
+action cancelBooking {
+  fn: import { cancelBooking } from "@src/bookings/operations",
+  entities: [Booking, Court, Club, User]
+}
+
 //#endregion

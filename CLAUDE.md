@@ -151,6 +151,41 @@ wsl bash -c '/home/timur/.local/bin/wasp db migrate-dev'
 cd padel-club-manager-pro/e2e-tests && npm test
 ```
 
+## Auto-Checkpoint Configuration
+
+### ✅ Configured Auto-Commit System
+
+**Status**: Auto-checkpoint is configured and running automatically every 30 minutes.
+
+#### Configuration Details:
+- **Cron job**: `*/30 * * * * /home/timur/auto-checkpoint.sh >> /tmp/auto-checkpoint.log 2>&1`
+- **Script location**: `/home/timur/auto-checkpoint.sh`
+- **Git config**: 
+  - Email: `timur.shar@gmail.com`
+  - Name: `Timur`
+- **Log file**: `/tmp/auto-checkpoint.log`
+
+#### Commands for Management:
+```bash
+# Check if auto-checkpoint is running
+crontab -l
+
+# View auto-checkpoint logs
+cat /tmp/auto-checkpoint.log
+
+# Test script manually
+~/auto-checkpoint.sh
+
+# Quick project startup (already configured)
+padel-start
+```
+
+#### Auto-Checkpoint Script Content:
+The script automatically commits changes every 30 minutes with the message format:
+`Auto-checkpoint: YYYY-MM-DD HH:MM:SS` plus Claude Code signature.
+
+**⚠️ IMPORTANT**: This auto-checkpoint system is already configured and running. Do NOT reconfigure unless specifically requested by the user.
+
 ## Core Business Concept
 
 ### ⚠️ CRITICAL CONCEPT CORRECTION
@@ -359,6 +394,7 @@ enum UserRole {
 3. **Public page secondary**: Simple and effective, not competing with Playtomic
 4. **Business management**: Tools to optimize club operations
 5. **TODO.md mandatory**: Never start without registering, never finish without marking
+6. **Auto-checkpoint configured**: DO NOT reconfigure auto-commit system unless requested
 
 ### Validation Questions
 

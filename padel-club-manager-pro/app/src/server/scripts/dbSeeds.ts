@@ -41,5 +41,6 @@ function generateMockUserData(): MockUserData {
     paymentProcessorUserId: hasUserPaidOnStripe ? `cus_test_${faker.string.uuid()}` : null,
     datePaid: hasUserPaidOnStripe ? faker.date.between({ from: createdAt, to: timePaid }) : null,
     subscriptionPlan: subscriptionStatus ? faker.helpers.arrayElement(getSubscriptionPaymentPlanIds()) : null,
+    clubId: null, // Users created by seed don't belong to any club initially
   };
 }
